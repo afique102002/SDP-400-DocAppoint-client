@@ -25,14 +25,14 @@ import {
 const slides = [
   {
     id: 1,
-    image: "/assets/BannerImg1.jpg",
+    image: "/assets/BannerImg1.png",
     badge: "Verified Healthcare",
     title: "Your Health, Our Priority",
     desc: "Trusted clinics, experienced doctors, and seamless appointment booking for better healthcare experience.",
   },
   {
     id: 2,
-    image: "/assets/BannerImg2.jpg",
+    image: "/assets/BannerImg2.png",
     badge: "Expert Specialists",
     title: "Book Top Rated Doctors",
     desc: "Find highly qualified specialists and schedule appointments instantly from anywhere.",
@@ -53,7 +53,7 @@ const slides = [
   },
   {
     id: 5,
-    image: "/assets/BannerImg5.jpg",
+    image: "/assets/BannerImg5.png",
     badge: "Trusted Platform",
     title: "Connecting Patients & Doctors",
     desc: "A modern healthcare platform designed for patients, clinics, and medical professionals.",

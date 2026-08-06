@@ -1,6 +1,8 @@
 import DoctorCard from "@/components/DoctorCard";
 import Category from "@/components/Category";
 import DoctorSearch from "@/components/DoctorSearch";
+import fs from "fs";
+import path from "path";
 
 export const metadata = {
   title: "All-Appointments | DocAppoint",
@@ -14,12 +16,9 @@ const AllAppointmentsPage = async ({ searchParams }) => {
   const category = params?.category;
   const search = params?.search?.toLowerCase() || "";
 
-  const res = await fetch(
-    "https://doc-appoint-doctor-appointment-mana.vercel.app/data.json",
-    { cache: "no-store" }
-  );
-
-  const doctors = await res.json();
+  const filePath = path.join(process.cwd(), "public", "data.json");
+  const rawData = fs.readFileSync(filePath, "utf8");
+  const doctors = JSON.parse(rawData);
 
   let filteredDoctors = doctors;
 

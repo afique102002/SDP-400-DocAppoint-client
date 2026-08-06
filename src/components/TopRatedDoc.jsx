@@ -1,12 +1,11 @@
 import DoctorCard from "./DoctorCard";
+import fs from "fs";
+import path from "path";
 
 const TopRatedDoc = async () => {
-  const res = await fetch(
-    "https://doc-appoint-doctor-appointment-mana.vercel.app/data.json",
-    { cache: "no-store" }
-  );
-
-  const doctors = await res.json();
+  const filePath = path.join(process.cwd(), "public", "data.json");
+  const rawData = fs.readFileSync(filePath, "utf8");
+  const doctors = JSON.parse(rawData);
 
   const topRatedDoctors = doctors
     .sort((a, b) => b.rating - a.rating)

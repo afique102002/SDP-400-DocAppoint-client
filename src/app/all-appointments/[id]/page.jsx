@@ -7,18 +7,17 @@ import {
 } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { BsCalendar2Week } from "react-icons/bs";
+import fs from "fs";
+import path from "path";
 
 import BookAppointmentButton from "@/components/BookAppointmentButton";
 
 const AllAppointmentDetailsPage = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(
-    "https://doc-appoint-doctor-appointment-mana.vercel.app/data.json",
-    { cache: "no-store" }
-  );
-
-  const doctors = await res.json();
+  const filePath = path.join(process.cwd(), "public", "data.json");
+  const rawData = fs.readFileSync(filePath, "utf8");
+  const doctors = JSON.parse(rawData);
   const doctor = doctors.find((d) => d.id === id);
 
   if (!doctor) {
