@@ -39,7 +39,6 @@ const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "All-Appointments", href: "/all-appointments" },
     { name: "Dashboard", href: "/dashboard" },
-    { name: "Medicine Info", href: "/medicine-info" }
   ];
 
   return (
