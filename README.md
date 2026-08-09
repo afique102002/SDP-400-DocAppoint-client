@@ -31,14 +31,7 @@ The project focuses on:
 
 # 🚀 Live Links
 
-## 🌍 Client Side
-
-Comming Soon
-
-## 🌍 Server Side
-
-Commig Soon
-
+https://sdp-400-doc-appoint-server.vercel.app
 ---
 
 # 🛠️ Technologies Used
