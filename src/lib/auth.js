@@ -4,9 +4,10 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { jwt } from "better-auth/plugins";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("MONGODB_URI environment variable is not defined.");
-}
+// Lazy initialization: do not access `process.env.MONGODB_URI` at module import
+// time so builds (which import this module) don't fail when the env var is
+// only provided at runtime in the deployment environment. The presence of
+// `MONGODB_URI` will be validated when `ensureInit()` runs.
 
 let client;
 let auth;
@@ -52,6 +53,10 @@ async function ensureInit() {
 
   initializationPromise = (async () => {
     try {
+      if (!process.env.MONGODB_URI) {
+        throw new Error("MONGODB_URI environment variable is not defined.");
+      }
+
       const mongoUri = await getMongoUri();
       client = new MongoClient(mongoUri, {
         serverSelectionTimeoutMS: 5000,
